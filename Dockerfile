@@ -1,5 +1,5 @@
 FROM alpine:3.8
-MAINTAINER tilldettmering@gmail.com
+MAINTAINER marin.sergey@gmail.com
 
 ENV HUGO_VERSION 0.54.0
 ENV HUGO_BINARY hugo_extended_${HUGO_VERSION}_Linux-64bit.tar.gz
@@ -7,7 +7,9 @@ ENV HUGO_BINARY hugo_extended_${HUGO_VERSION}_Linux-64bit.tar.gz
 ENV GLIBC_VERSION 2.27-r0
 
 RUN set -x && \
-  apk add --update wget ca-certificates libstdc++
+  apk add --update wget ca-certificates libstdc++ && \
+  apk add --update nodejs npm && \
+  npm install --global postcss-cli
 
 # Install glibc: This is required for HUGO-extended (including SASS) to work.
 
